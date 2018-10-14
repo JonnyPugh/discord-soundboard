@@ -1,0 +1,16 @@
+{
+    "name": "soundboard",
+    "version": "0.0.1",
+    "description": "Discord bot that plays sounds",
+    "main": "soundboard.js",
+    "author": "Jonathan Pugh",
+    "dependencies": {
+      "discord.js": "11.4.2"
+    },
+    "devDependencies": {},
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "license": "MIT"
+  }
+  
