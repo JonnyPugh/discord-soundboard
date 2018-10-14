@@ -5,7 +5,9 @@
   "main": "soundboard.js",
   "author": "Jonathan Pugh",
   "dependencies": {
-    "discord.js": "11.4.2"
+    "discord.js": "11.4.2",
+    "ffmpeg-binaries": "^4.0.0",
+    "node-opus": "^0.3.0"
   },
   "devDependencies": {},
   "scripts": {

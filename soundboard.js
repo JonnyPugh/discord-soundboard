@@ -12,12 +12,15 @@ function getRandomFile(folder) {
 }
 
 function playSound(message) {
-  if (message.member.voiceChannel) {
-    message.member.voiceChannel.join().then(connection => {
-      connection.playFile(getRandomFile(config['soundFolder']));
+  let voiceChannel = message.member.voiceChannel;
+  if (voiceChannel) {
+    voiceChannel.join().then(connection => {
+      connection.playFile(getRandomFile(config['soundFolder'])).on('end', () => {
+        voiceChannel.leave();
+      });
     }).catch(console.log);
   } else {
-    message.reply('You need to be in a voice channel');
+    message.reply('you need to be in a voice channel');
   }
 }
 
