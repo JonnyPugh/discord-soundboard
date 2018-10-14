@@ -15,9 +15,13 @@ function playSound(message) {
   let voiceChannel = message.member.voiceChannel;
   if (voiceChannel) {
     voiceChannel.join().then(connection => {
-      connection.playFile(getRandomFile(config['soundFolder'])).on('end', () => {
+      const dispatcher = connection.playFile(getRandomFile(config['soundFolder']));
+      dispatcher.on('end', () => {
         voiceChannel.leave();
       });
+      dispatcher.on('error', e => {
+        console.log(e);
+      })
     }).catch(console.log);
   } else {
     message.reply('you need to be in a voice channel');
