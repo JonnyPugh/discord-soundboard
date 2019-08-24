@@ -10,3 +10,5 @@ Discord bot that plays sounds
 docker build . -t soundboard
 docker run -e SOUNDBOARD_TOKEN=<Discord API token> -v <Path to sound file directory>:/sounds soundboard
 ```
+
+## [Docker Repository](https://hub.docker.com/r/jonnypugh/soundboard)
