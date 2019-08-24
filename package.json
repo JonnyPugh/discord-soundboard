@@ -2,16 +2,19 @@
   "name": "soundboard",
   "version": "0.0.1",
   "description": "Discord bot that plays sounds",
-  "main": "soundboard.js",
+  "main": "index.js",
   "author": "Jonathan Pugh",
   "dependencies": {
-    "discord.js": "11.4.2",
-    "ffmpeg-binaries": "^4.0.0",
-    "node-opus": "^0.3.0"
+    "discord.js": "^11.5.1",
+    "opusscript": "0.0.7"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JonnyPugh/discord-soundboard.git"
+  }
 }
