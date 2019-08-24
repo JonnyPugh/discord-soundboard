@@ -2,6 +2,8 @@ FROM node:12.9.0-alpine
 
 RUN apk add --update \
     python \
+    make \
+    g++ \
     ffmpeg
 
 COPY . .
