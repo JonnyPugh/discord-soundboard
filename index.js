@@ -7,22 +7,17 @@ const getRandomSoundFile = () => {
   return folder + '/' + files[Math.floor(Math.random() * files.length)];
 }
 
-const playSound = async (message) => {
-  const voiceChannel = message.member.voiceChannel;
-  if (voiceChannel) {
-    try {
-      const connection = await voiceChannel.join();
-      const dispatcher = connection.playFile(getRandomSoundFile());
-      dispatcher.on('end', () => voiceChannel.leave());
-      dispatcher.on('error', err => {
-        console.log(err);
-        voiceChannel.leave();
-      });
-    } catch(err) {
+const playSound = async (channel) => {
+  try {
+    const connection = await channel.join();
+    const dispatcher = connection.play(getRandomSoundFile());
+    dispatcher.on('finish', () => channel.leave());
+    dispatcher.on('error', err => {
       console.log(err);
-    }
-  } else {
-    message.reply('you need to be in a voice channel');
+      channel.leave();
+    });
+  } catch(err) {
+    console.log(err);
   }
 }
 
@@ -30,7 +25,12 @@ const client = new Discord.Client();
 
 client.on('message', message => {
   if (message.content === '!sound') {
-    playSound(message);
+    const channel = message.member.voice.channel;
+    if (channel) {
+      playSound(channel);
+    } else {
+      message.reply('you need to be in a voice channel');
+    }
   }
 });
 
